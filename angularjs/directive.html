@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="directiveDemoApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/base.css"/>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        div[google-map] {
+            height: 100%;
+        }
+        div[ng-controller="MyCtrl"] {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.8);
+            height: 5em;
+            width: 5em;
+            color: #eee;
+            z-index: 2000;
+            text-shadow: 1px 1px 1px black;
+            padding: 1em;
+            top: 100px;
+            right: 20px;
+
+        }
+    </style>
+    <title>Angular Directive</title>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script>
+        angular.module('directiveDemoApp', []).controller('MyCtrl', function ($scope) {
+            $scope.message = 'Hello World!';
+        }).directive('googleMap', function () {
+            // returns a Directive Definition Object (DDO)
+            return {
+                // properties --> restrict, link, templateUrl ...
+                restrict: 'A',
+                link: function(scope, element, attrs) {
+
+                    initializeMap();
+
+                    function initializeMap(){
+                        var mapOptions = {
+                            center: new google.maps.LatLng(-34.397, 150.644),
+                            zoom: 8
+                        };
+                        var map = new google.maps.Map(element[0],
+                                mapOptions);
+                    }
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="MyCtrl">
+        <span>{{message}}</span>
+    </div>
+    <div google-map>
+
+    </div>
+    <div imageselector></div>
+</body>
+</html>
