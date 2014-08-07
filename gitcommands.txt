@@ -1,0 +1,5 @@
+
+  501  git init
+  502  git add .
+  503  git remote add github git@github.com:pvtech/foram.git
+  504  history > gitcommands.txt
