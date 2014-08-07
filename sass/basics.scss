@@ -1,0 +1,29 @@
+/* Working with variables */
+
+@import 'partial'; /* working with partial scss */
+
+$color: rgba(255, 45, 35, 0.8);
+$basefont: 200 1em 'Helvetica Neue';
+
+body {
+  font: $basefont;
+}
+
+div.square {
+  position: absolute;
+  height: 3em;
+  width: 3em;
+  background-color: rgba(255, 45, 35, 0.8);
+}
+
+div {
+
+  > ul > li {
+    font-weight: 600;
+  }
+
+  span {
+    font-size: 0.85em;
+  }
+
+}

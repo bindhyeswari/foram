@@ -1,0 +1,35 @@
+/* Working with variables */
+span {
+  display: inline-block;
+  background-color: #eee; }
+
+div.square:hover {
+  background-color: rgba(10, 41, 10, 0.8);
+  -moz-transition: background-color 500ms ease;
+  -webkit-transition: background-color 500ms ease;
+  -ms-transition: background-color 500ms ease;
+  -o-transition: background-color 500ms ease;
+  transition: background-color 500ms ease; }
+
+div.square {
+  background-color: rgba(91, 215, 91, 0.8);
+  -moz-transition: background-color 500ms ease;
+  -webkit-transition: background-color 500ms ease;
+  -ms-transition: background-color 500ms ease;
+  -o-transition: background-color 500ms ease;
+  transition: background-color 500ms ease; }
+
+/* working with partial scss */
+body {
+  font: 200 1em "Helvetica Neue"; }
+
+div.square {
+  position: absolute;
+  height: 3em;
+  width: 3em;
+  background-color: rgba(255, 45, 35, 0.8); }
+
+div > ul > li {
+  font-weight: 600; }
+div span {
+  font-size: 0.85em; }
