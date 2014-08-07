@@ -1,5 +1,38 @@
-
-  501  git init
-  502  git add .
-  503  git remote add github git@github.com:pvtech/foram.git
-  504  history > gitcommands.txt
+    1  pwd
+    2  ls
+    3  explorer .
+    4  clear
+    5  cd desktop
+    6  cd ui
+    7  ls
+    8  mkdir posttraining
+    9  cd posttraining
+   10  cd ..
+   11  mv posttraining postr
+   12  cd postr
+   13  git init
+   14  git add remote github git@github.com:pvtech/foram.git
+   15  touch dummyfile.txt
+   16  git add .
+   17  git commit -m 'setting up'
+   18  git remote add g git@github.com:pvtech/foram.git
+   19  git pull g master
+   20  explorer .
+   21  clear
+   22  git add .
+   23  git commit -m 'sass examples'
+   24  git push g master
+   25  history > commands.txt
+   26  git pull g master
+   28  git add .
+   29  git pull g master
+   31  rm .idea/workspace.xml
+   32  git rm .idea/workspace.xml
+   33  git pull g master
+   34  cd ..
+   35  rm -rf postr
+   36  ls
+   37  cd postr
+   38  git clone https://github.com/pvtech/foram
+   39  cd foram
+   40  history > gitcommands.txt
