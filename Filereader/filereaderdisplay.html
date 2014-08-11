@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="base.css"/>
+    <style>
+        img {
+            width: 200px;
+            margin: 0.55em;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var allowed_image_types = ['image/jpeg', 'image/png', 'image/tiff'];
+            var results = document.getElementById('results');
+            document.getElementsByTagName('input')[0].addEventListener('change', function (event) {
+                var files = event.target.files;
+                for (var i = 0, len = files.length; i < len; i++) {
+                    var file = files[i];
+
+                    // * read the file if the mime type is image/jpeg | image/png | image/tiff
+                    // * create an img element
+                    // * set the src of the image element to the file data url
+
+                    if (allowed_image_types.indexOf(file.type) !== -1) {
+                        // checks if the file type is a valid allowed image type
+
+                        // create a reader
+                        var reader = new FileReader();
+
+
+
+                        /**
+                         * handle the reader onload end using bind
+                         * */
+                        /*reader.addEventListener('loadend', loadhandler.bind(null, reader));
+
+                        var loadhandler = function (r) {
+                            var img = document.createElement('img');
+                            results.appendChild(img);
+                            img.src = r.result;
+                        };*/
+
+
+                        /**
+                         * handle the reader onload end using this
+                         * */
+
+                        reader.addEventListener('loadend', function (event) {
+                            var img = document.createElement('img');
+                            results.appendChild(img);
+                            img.src = this.result;
+                        });
+
+                        reader.readAsDataURL(file);
+
+                        // http://css-tricks.com/data-uris/
+
+                    }
+
+
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="file" multiple/>
+<div id="results">
+
+</div>
+</body>
+</html>

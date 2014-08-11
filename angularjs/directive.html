@@ -32,12 +32,16 @@
     <script>
         angular.module('directiveDemoApp', [])
                 .controller('MyCtrl', function ($scope, $http) {
-                    $scope.message = 'Change Zooming!';
-                    $scope.zooming = 8;
+                    $scope.message = 'Change zoom!';
+                    $scope.zoom = 8;
+                    $scope.center = {
+                            lat: -34.397,
+                            lon: 150.644
+                    };
                     $scope.filesChanged = function (elem) {
-                        $scope.files = elem.files
+                        $scope.files = elem.files;
                         $scope.$apply();
-                    }
+                    };
                     $scope.upload = function () {
                         $http.post('directive.html', $scope.files,
                                     {headers: {'Content-Type': 'multipart/form-data'}
@@ -45,7 +49,7 @@
                                 .success(function (d) {
                                     console.log(d);
                                 })
-                    }
+                    };
                     //$scope.f = "";
 //                    $scope.handleFiles = function (file) {
 //                        alert(file);
@@ -75,19 +79,25 @@
                         // properties --> restrict, link, templateUrl ...
                         restrict: 'A',
                         link: function (scope, element, attrs) {
+                            // * This code is run once to set up the directive
+                            var map;
+                            initializeMap();
+
+
                             function initializeMap() {
-                                //console.log(scope.zooming);
+                                //console.log(scope.zoom);
                                 var mapOptions = {
-                                    center: new google.maps.LatLng(-34.397, 150.644),
-                                    zoom: scope.zooming === "" ? 0 : parseInt(scope.zooming)
+                                    center: new google.maps.LatLng(scope.center.lat, scope.center.lon),
+                                    zoom: scope.zoom
                                 };
-                                var map = new google.maps.Map(element[0],
+                                map = new google.maps.Map(element[0],
                                         mapOptions);
                             }
 
                             scope.$watch(attrs.googleMap, function (value) {
-                                scope.zooming = value;
-                                initializeMap();
+                                scope.zoom = value;
+                                console.log('calling zoom ... ');
+                                if (scope.zoom !== '') map.setZoom(parseInt(scope.zoom));
                             });
 
                         }
@@ -98,7 +108,7 @@
                         link: function (scope, elem, attrs) {
                             elem.bind('change', function () {
                                 $parse(attrs.imageSelector).assign(scope.elem[0].files);
-                                scope.$apply()
+                                scope.$apply();
                             })
                         }
                     }
@@ -109,9 +119,9 @@
 <div ng-controller="MyCtrl">
     <div class="msg">
         <span>{{message}}</span>
-        <span><input type="text" ng-model="zooming"/></span>
+        <span><input type="text" ng-model="zoom"/></span>
     </div>
-    <div google-map="zooming">
+    <div google-map="zoom">
     </div>
 
     <div>
