@@ -1,0 +1,170 @@
+
+////RGB Functions
+$color:rgb($red, $green, $blue);
+//Creates a Color from red, green, and blue values.
+$color:rgba($red, $green, $blue, $alpha);
+//Creates a Color from red, green, blue, and alpha values.
+$color:red($color);
+//Gets the red component of a color.
+$color:green($color);
+//Gets the green component of a color.
+$color:blue($color);
+//Gets the blue component of a color.
+
+//mix($color1, $color2, [$weight]);
+//Mixes two colors together.
+
+/////HSL Functions
+$color: hsl(120deg, 100%, 50%);
+hsl($hue, $saturation, $lightness);
+//Creates a Color from hue, saturation, and lightness values.
+hsla($hue, $saturation, $lightness, $alpha);
+//Creates a Color from hue, saturation, lightness, and alpha values.
+hue($color);
+//Gets the hue component of a color.
+saturation($color);
+//Gets the saturation component of a color.
+lightness($color);
+//Gets the lightness component of a color.
+adjust-hue($color, $degrees);
+//Changes the hue of a color.
+lighten($color, $amount);
+//Makes a color lighter.
+darken($color, $amount);
+//Makes a color darker.
+saturate($color, $amount);
+//Makes a color more saturated.
+desaturate($color, $amount);
+//Makes a color less saturated.
+grayscale($color);
+//Converts a color to grayscale.
+complement($color);
+//Returns the complement of a color.
+invert($color);
+//Returns the inverse of a color.
+
+/////Opacity Functions
+alpha($color) / opacity($color);
+//Gets the alpha component (opacity) of a color.
+rgba($color, $alpha);
+//Changes the alpha component for a color.
+opacify($color, $amount) / fade-in($color, $amount);
+//Makes a color more opaque.
+transparentize($color, $amount) / fade-out($color, $amount);
+//Makes a color more transparent.
+
+////Other Color Functions
+//adjust-color($color, [$red], [$green], [$blue], [$hue], [$saturation], [$lightness], [$alpha])
+//Increases or decreases one or more components of a color.
+//scale-color($color, [$red], [$green], [$blue], [$saturation], [$lightness], [$alpha])
+//Fluidly scales one or more properties of a color.
+//change-color($color, [$red], [$green], [$blue], [$hue], [$saturation], [$lightness], [$alpha])
+//Changes one or more properties of a color.
+ie-hex-str($color);
+//Converts a color into the format understood by IE filters.
+
+////String Functions
+unquote($string);
+//Removes quotes from a string.
+quote($string);
+//Adds quotes to a string.
+str-length($string);
+//Returns the number of characters in a string.
+str-insert($string, $insert, $index);
+//Inserts $insert into $string at $index.
+str-index($string, $substring);
+//Returns the index of the first occurance of $substring in $string.
+//str-slice($string, $start-at, [$end-at])
+//Extracts a substring from $string.
+to-upper-case($string);
+//Converts a string to upper case.
+to-lower-case($string);
+//Converts a string to lower case.
+
+
+//Number Functions
+percentage($number);
+//Converts a unitless number to a percentage.
+round($number);
+//Rounds a number to the nearest whole number.
+ceil($number);
+//Rounds a number up to the next whole number.
+floor($number);
+//Rounds a number down to the previous whole number.
+abs($number);
+//Returns the absolute value of a number.
+//min($numbers…);
+//Finds the minimum of several numbers.
+//max($numbers…);
+//Finds the maximum of several numbers.
+//random([$limit])
+//Returns a random number.
+
+////List Functions
+//All list functions work for maps as well, treating them as lists of pairs.
+
+length($list);
+//Returns the length of a list.
+nth($list, $n);
+//Returns a specific item in a list.
+//join($list1, $list2, [$separator]);
+//Joins together two lists into one.
+//append($list1, $val, [$separator]);
+//Appends a single value onto the end of a list.
+//zip($lists…)
+//Combines several lists into a single multidimensional list.
+index($list, $value);
+//Returns the position of a value within a list.
+list-separator(#list);
+//Returns the separator of a list.
+
+////Map Functions
+map-get($map, $key);
+//Returns the value in a map associated with a given key.
+map-merge($map1, $map2);
+//Merges two maps together into a new map.
+map-remove($map, $key);
+//Returns a new map with a key removed.
+map-keys($map);
+//Returns a list of all keys in a map.
+map-values($map);
+//Returns a list of all values in a map.
+map-has-key($map, $key);
+//Returns whether a map has a value associated with a given key.
+keywords($args);
+//Returns the keywords passed to a function that takes variable arguments.
+
+////Introspection Functions
+feature-exists($feature);
+//Returns whether a feature exists in the current Sass runtime.
+variable-exists($name);
+//Returns whether a variable with the given name exists in the current scope.
+global-variable-exists($name);
+//Returns whether a variable with the given name exists in the global scope.
+function-exists($name);
+//Returns whether a function with the given name exists.
+mixin-exists($name);
+//Returns whether a mixin with the given name exists.
+inspect($value);
+//Returns the string representation of a value as it would be represented in Sass.
+type-of($value);
+//Returns the type of a value.
+unit($number);
+//Returns the unit(s) associated with a number.
+unitless($number);
+//Returns whether a number has units.
+comparable($number1, $number2);
+//Returns whether two numbers can be added, subtracted, or compared.
+//call($name, $args…)
+
+//Dynamically calls a Sass function.
+////Miscellaneous Functions
+if($condition, $if-true, $if-false);
+//Returns one of two values, depending on whether or not $condition is true.
+unique-id()
+//Returns a unique CSS identifier.
+
+
+h1{
+  color: $color;
+}
